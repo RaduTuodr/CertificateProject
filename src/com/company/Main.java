@@ -1,12 +1,18 @@
 package com.company;
 
 import com.company.gui.CreateStudentFrame;
+import com.company.repository.DBSetup;
+import com.company.repository.StudentRepository;
+import com.company.service.StudentService;
 
 public class Main {
 
     public static void main(String[] args) {
 
         new CreateStudentFrame();
+        StudentRepository studentRepository = new StudentRepository();
+        StudentService studentService = new StudentService(studentRepository);
+        DBSetup dbSetup = new DBSetup();
 
 //        StudentRepository studentRepository = new StudentRepository();
 //        StudentService studentService = new StudentService(studentRepository);

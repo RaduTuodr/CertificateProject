@@ -1,11 +1,20 @@
 package com.company.gui;
 
+import com.company.repository.DBSetup;
+import com.company.repository.StudentRepository;
+import com.company.service.StudentService;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class CreateStudentFrame {
+
+    StudentRepository studentRepository;
+    StudentService studentService;
 
     JFrame frame;
     JPanel panel;
@@ -28,6 +37,23 @@ public class CreateStudentFrame {
 
         frame.add(panel);
         frame.setVisible(true);
+
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                studentRepository = new StudentRepository();
+                studentService = new StudentService(studentRepository);
+                DBSetup dbSetup = new DBSetup();
+                studentService.addStudent(dbSetup.connection,
+                        firstNameField.getText(),
+                        lastNameField.getText(),
+                        emailField.getText(),
+                        passwordField.getText());
+
+                // next frame
+            }
+        });
     }
 
     private void setFrameArgs(Frame frame) {

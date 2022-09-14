@@ -15,14 +15,14 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public void addStudent(Connection connection, String first_name, String last_name, String email) {
+    public void addStudent(Connection connection, String first_name, String last_name, String email, String password) {
 
         Student student = new Student(
                 "",
                 first_name,
                 last_name,
-                email
-        );
+                email,
+                password);
         try {
             this.studentRepository.addStudent(connection, student);
         } catch (SQLException throwables) {

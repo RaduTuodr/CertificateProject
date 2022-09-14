@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class StudentRepository {
 
-    private static final String addStudentSQLStatement = "INSERT INTO students(first_name, last_name, email) VALUES (?, ?, ?)";
+    private static final String addStudentSQLStatement = "INSERT INTO students(first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
     private static final String deleteStudentSQLStatement = "DELETE FROM students WHERE id = ";
 
     public void closeProcess(Connection connection, PreparedStatement statement) throws SQLException {
@@ -24,6 +24,7 @@ public class StudentRepository {
         st.setString(1, student.getFirstName());
         st.setString(2, student.getLastName());
         st.setString(3, student.getEmail());
+        st.setString(4, student.getPassword());
         st.executeUpdate();
 
         this.closeProcess(connection, st);
