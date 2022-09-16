@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.gui.CreateStudentFrame;
+import com.company.gui.WelcomeFrame;
 import com.company.repository.DBSetup;
 import com.company.repository.StudentRepository;
 import com.company.service.StudentService;
@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new CreateStudentFrame();
+        new WelcomeFrame();
+
         StudentRepository studentRepository = new StudentRepository();
         StudentService studentService = new StudentService(studentRepository);
         DBSetup dbSetup = new DBSetup();

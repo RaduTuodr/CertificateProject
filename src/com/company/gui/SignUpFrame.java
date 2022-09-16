@@ -8,10 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
-public class CreateStudentFrame {
+public class SignUpFrame {
 
     StudentRepository studentRepository;
     StudentService studentService;
@@ -26,13 +24,10 @@ public class CreateStudentFrame {
     JButton createButton,
             clearButton;
 
-    public CreateStudentFrame() {
-
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setFrameArgs(frame);
+    public SignUpFrame() {
 
         initComponents();
+        setUpFrameArgs();
         placeComponents(panel);
 
         frame.add(panel);
@@ -51,15 +46,15 @@ public class CreateStudentFrame {
                         emailField.getText(),
                         passwordField.getText());
 
-                // next frame
+                // TODO: next frame
             }
         });
     }
 
-    private void setFrameArgs(Frame frame) {
+    private void setUpFrameArgs() {
 
-
-        frame.setTitle("Create your account");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setTitle("Sign Up");
         frame.setSize(500, 300);
         frame.setLocation(200, 200);
 
@@ -68,6 +63,7 @@ public class CreateStudentFrame {
 
     private void initComponents() {
 
+        frame = new JFrame();
         panel = new JPanel();
 
         firstNameText = new JLabel("First Name");

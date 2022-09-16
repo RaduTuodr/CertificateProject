@@ -17,6 +17,9 @@ public class DBSetup {
             "    password text COLLATE pg_catalog.\"default\" NOT NULL,\n" +
             "    CONSTRAINT students_pkey PRIMARY KEY (id)\n" +
             ")";
+    private static final String
+            makeEmailColumnUniqueStatement = "ALTER TABLE students\n" +
+            "ADD UNIQUE (email);";
 
     public Connection connection;
 
@@ -43,6 +46,17 @@ public class DBSetup {
 
         try {
             PreparedStatement statement = connection.prepareStatement(createStudentTableStatement);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void makeEmailColumnUnique() {
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(makeEmailColumnUniqueStatement);
             statement.executeUpdate();
             statement.close();
         } catch (SQLException throwables) {
